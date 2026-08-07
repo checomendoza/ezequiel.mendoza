@@ -6,8 +6,8 @@ export const ui: TypesUI = {
   "ui.name": "Ezequiel Mendoza",
   "ui.title": "Senior Software Engineer",
   "ui.tagline": "Construyendo productos digitales y sistemas de ingeniería impulsados por IA.",
-  "ui.availability": "Abierto a oportunidades remotas internacionales",
-  "ui.ctaContact": "Contactame",
+  "ui.availability": "Disponible para trabajo remoto",
+  "ui.ctaContact": "Contacto",
   "ui.ctaResume": "CV",
   "ui.metaDescription":
     "Senior Software Engineer con más de 15 años de experiencia construyendo productos digitales y sistemas de ingeniería impulsados por IA. SaaS, mobile, cloud e IA aplicada.",

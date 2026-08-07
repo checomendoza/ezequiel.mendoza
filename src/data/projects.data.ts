@@ -1,6 +1,10 @@
 /** @format */
 
 import type { TypesProjectsTranslates } from "../constants/index.types";
+import full24_01 from "../assets/full24_01.webp";
+import luigi_01 from "../assets/luigi_01.webp";
+import radiobellavista_01 from "../assets/radiobellavista_01.webp";
+import audec_01 from "../assets/audec_01.webp";
 
 const FULL24_URL =
   "https://play.google.com/store/apps/details?id=com.full24.app&hl=es_AR&gl=US";
@@ -18,7 +22,7 @@ export const FeaturedProjectsData: TypesProjectsTranslates = {
       id: 1,
       name: "ai-agents",
       subtitle:
-        "Specification-Driven Development Framework for AI-assisted Software Engineering",
+        "Specification-driven AI software development framework",
       category: "AI Engineering Framework · Open Source",
       status: "open-source",
       description:
@@ -126,7 +130,7 @@ export const FeaturedProjectsData: TypesProjectsTranslates = {
       id: 1,
       name: "ai-agents",
       subtitle:
-        "Framework de desarrollo guiado por especificaciones para ingeniería de software asistida por IA",
+        "Framework de desarrollo de software con IA guiado por especificaciones",
       category: "Framework de Ingeniería IA · Open Source",
       status: "open-source",
       description:
@@ -242,7 +246,7 @@ export const MoreProjectsData: TypesProjectsTranslates = {
         "Grocery store app with purchases, promotions and notifications.",
       highlights: [],
       technologies: ["React Native", "TypeScript", "NativeBase"],
-      images: ["/images/webp/full24_01.webp"],
+      images: [full24_01],
       links: [{ label: "Google Play", url: FULL24_URL }],
     },
     {
@@ -254,7 +258,7 @@ export const MoreProjectsData: TypesProjectsTranslates = {
         "Ice cream shop app with promotions and discount coupons.",
       highlights: [],
       technologies: ["React Native", "TypeScript", "Styled Components"],
-      images: ["/images/webp/luigi_01.webp"],
+      images: [luigi_01],
       links: [{ label: "Google Play", url: LUIGI_URL }],
     },
     {
@@ -266,7 +270,7 @@ export const MoreProjectsData: TypesProjectsTranslates = {
         "Radio streaming and news app with chat and notifications.",
       highlights: [],
       technologies: ["React Native", "JavaScript", "Styled Components"],
-      images: ["/images/webp/radiobellavista_01.webp"],
+      images: [radiobellavista_01],
       links: [{ label: "Google Play", url: RADIO_URL }],
     },
     {
@@ -278,7 +282,7 @@ export const MoreProjectsData: TypesProjectsTranslates = {
         "Management software for vehicle appraisal and expert reports.",
       highlights: [],
       technologies: ["Next.js", "Tailwind", "TypeScript"],
-      images: ["/images/webp/audec_01.webp"],
+      images: [audec_01],
       links: [],
     },
   ],
@@ -292,7 +296,7 @@ export const MoreProjectsData: TypesProjectsTranslates = {
         "App de tienda de comestibles con compras, promociones y notificaciones.",
       highlights: [],
       technologies: ["React Native", "TypeScript", "NativeBase"],
-      images: ["/images/webp/full24_01.webp"],
+      images: [full24_01],
       links: [{ label: "Google Play", url: FULL24_URL }],
     },
     {
@@ -304,7 +308,7 @@ export const MoreProjectsData: TypesProjectsTranslates = {
         "App de heladería con promociones y cupones de descuento.",
       highlights: [],
       technologies: ["React Native", "TypeScript", "Styled Components"],
-      images: ["/images/webp/luigi_01.webp"],
+      images: [luigi_01],
       links: [{ label: "Google Play", url: LUIGI_URL }],
     },
     {
@@ -316,7 +320,7 @@ export const MoreProjectsData: TypesProjectsTranslates = {
         "App de streaming de radio y noticias con chat y notificaciones.",
       highlights: [],
       technologies: ["React Native", "JavaScript", "Styled Components"],
-      images: ["/images/webp/radiobellavista_01.webp"],
+      images: [radiobellavista_01],
       links: [{ label: "Google Play", url: RADIO_URL }],
     },
     {
@@ -328,7 +332,7 @@ export const MoreProjectsData: TypesProjectsTranslates = {
         "Software de gestión de peritajes y tasación de vehículos.",
       highlights: [],
       technologies: ["Next.js", "Tailwind", "TypeScript"],
-      images: ["/images/webp/audec_01.webp"],
+      images: [audec_01],
       links: [],
     },
   ],

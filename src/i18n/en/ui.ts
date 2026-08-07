@@ -6,7 +6,7 @@ export const ui: TypesUI = {
   "ui.name": "Ezequiel Mendoza",
   "ui.title": "Senior Software Engineer",
   "ui.tagline": "Building digital products and AI-driven engineering systems.",
-  "ui.availability": "Open to international remote opportunities",
+  "ui.availability": "Open to remote work",
   "ui.ctaContact": "Contact me",
   "ui.ctaResume": "Resume",
   "ui.metaDescription":

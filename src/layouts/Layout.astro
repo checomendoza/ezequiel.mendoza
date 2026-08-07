@@ -3,6 +3,7 @@ import Header from '../components/Header.astro'
 import { getCurrentHost } from '../utilities'
 import { useTranslation } from '../i18n/utils'
 import type { TypesLang } from '../i18n/i18n.types'
+import ProfilePhoto from '../assets/ProfilePhoto.webp'
 
 interface Props {
 	title: string
@@ -14,6 +15,7 @@ const lang = currentLocale as TypesLang
 const t = useTranslation(lang)
 const siteUrl = getCurrentHost()
 const pageUrl = new URL(Astro.url.pathname, siteUrl).toString()
+const profileImageUrl = new URL(ProfilePhoto.src, siteUrl).toString()
 
 const schema = {
 	'@context': 'https://schema.org',
@@ -22,7 +24,7 @@ const schema = {
 	jobTitle: 'Senior Software Engineer',
 	url: `${siteUrl}/`,
 	email: 'mailto:ezequielmendoza.dev@gmail.com',
-	image: `${siteUrl}/images/webp/ProfilePhoto.webp`,
+	image: profileImageUrl,
 	knowsAbout: [
 		'React',
 		'Next.js',
@@ -68,11 +70,11 @@ const schema = {
 		<meta property='og:url' content={pageUrl} />
 		<meta property='og:title' content={title} />
 		<meta property='og:description' content={t('ui.metaDescription')} />
-		<meta property='og:image' content={`${getCurrentHost()}/images/webp/ProfilePhoto.webp`} />
+		<meta property='og:image' content={profileImageUrl} />
 		<meta name='twitter:card' content='summary' />
 		<meta name='twitter:title' content={title} />
 		<meta name='twitter:description' content={t('ui.metaDescription')} />
-		<meta name='twitter:image' content={`${getCurrentHost()}/images/webp/ProfilePhoto.webp`} />
+		<meta name='twitter:image' content={profileImageUrl} />
 		<link rel='preconnect' href='https://fonts.googleapis.com' />
 		<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
 		<link

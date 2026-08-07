@@ -19,7 +19,7 @@ export const ExperiencesData: TypesExperiencesTranslates = {
     },
     {
       company: "ControlFit",
-      role: "Founder · Full Stack Engineer",
+      role: "CTO · Full Stack Engineer",
       period: "2025 – Present",
       location: "Remote · Argentina",
       highlights: [
@@ -66,7 +66,7 @@ export const ExperiencesData: TypesExperiencesTranslates = {
     },
     {
       company: "ControlFit",
-      role: "Fundador · Full Stack Engineer",
+      role: "CTO · Full Stack Engineer",
       period: "2025 – Presente",
       location: "Remoto · Argentina",
       highlights: [
