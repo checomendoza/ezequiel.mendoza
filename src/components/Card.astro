@@ -1,6 +1,6 @@
 ---
-import { getCurrentHost } from '../utilities'
 import type { TypesProjects } from '../constants/index.types'
+import { Image } from 'astro:assets'
 
 interface Props {
 	project: TypesProjects
@@ -22,13 +22,15 @@ const statusClasses = {
 		<article class='flex flex-col rounded-xl border border-gray-800 bg-gray-800/50 p-5'>
 			{
 				project.images.length > 0 && (
-					<img
-						src=`${getCurrentHost()}${project.images[0]}`
-						alt=`${project.name}`
+					<Image
+						src={project.images[0]}
+						alt={`${project.name}`}
 						class='mb-4 h-32 w-full rounded-lg object-cover'
 						loading='lazy'
 						width='320'
 						height='128'
+						format='webp'
+						quality='80'
 					/>
 				)
 			}
@@ -65,13 +67,15 @@ const statusClasses = {
 			>
 				{
 					project.images.length > 0 ? (
-						<img
-							src=`${getCurrentHost()}${project.images[0]}`
-							alt=`${project.name}`
+						<Image
+							src={project.images[0]}
+							alt={`${project.name}`}
 							class='h-full w-full object-cover'
 							loading='lazy'
 							width='640'
 							height='176'
+							format='webp'
+							quality='80'
 						/>
 					) : (
 						<span

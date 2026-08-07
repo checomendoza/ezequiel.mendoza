@@ -1,5 +1,7 @@
 /** @format */
 
+import type { ImageMetadata } from "astro";
+
 export type TypesProjectStatus =
   | "production"
   | "experiment"
@@ -15,7 +17,7 @@ export type TypesProjects = {
   description: string;
   highlights: string[];
   technologies: string[];
-  images: string[];
+  images: ImageMetadata[];
   links: { label: string; url: string | null }[];
 };
 
