@@ -1,7 +1,6 @@
 /** @format */
 
 import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
 
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
@@ -26,14 +25,13 @@ export default defineConfig({
   site: SITE_URL,
   base: BASE_URL,
   i18n: {
-    defaultLocale: "es",
+    defaultLocale: "en",
     locales: ["es", "en"],
     routing: {
       prefixDefaultLocale: false,
     },
   },
   integrations: [
-    react(),
     tailwind(),
     mdx(),
     sitemap(),

@@ -1,20 +1,52 @@
 ---
 import Header from '../components/Header.astro'
 import { getCurrentHost } from '../utilities'
+import { useTranslation } from '../i18n/utils'
+import type { TypesLang } from '../i18n/i18n.types'
+
 interface Props {
 	title: string
 }
 
 const { title } = Astro.props
 const { currentLocale } = Astro
+const lang = currentLocale as TypesLang
+const t = useTranslation(lang)
+const siteUrl = getCurrentHost()
+const pageUrl = new URL(Astro.url.pathname, siteUrl).toString()
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Ezequiel Mendoza',
+	jobTitle: 'Senior Software Engineer',
+	url: `${siteUrl}/`,
+	email: 'mailto:ezequielmendoza.dev@gmail.com',
+	image: `${siteUrl}/images/webp/ProfilePhoto.webp`,
+	knowsAbout: [
+		'React',
+		'Next.js',
+		'React Native',
+		'TypeScript',
+		'Cloud',
+		'Artificial Intelligence',
+		'AI Engineering',
+		'Software Architecture',
+	],
+	sameAs: [
+		'https://github.com/ezequielmendoza-dev',
+		'https://www.linkedin.com/in/ezequiel-mendoza/',
+		'https://x.com/ezemedev',
+	],
+}
 ---
 
 <!doctype html>
 <html lang={currentLocale} class='scroll-smooth'>
 	<head>
 		<!-- Google tag (gtag.js) -->
-		<script type='text/partytown' async src='https://www.googletagmanager.com/gtag/js?id=G-Y160BPR115'></script>
-		<script type='text/partytown'>
+		<script type='text/partytown' is:inline async src='https://www.googletagmanager.com/gtag/js?id=G-Y160BPR115'></script>
+		<script type='text/partytown' is:inline>
 			window.dataLayer = window.dataLayer || []
 			function gtag() {
 				dataLayer.push(arguments)
@@ -24,9 +56,23 @@ const { currentLocale } = Astro
 			gtag('config', 'G-Y160BPR115')
 		</script>
 		<meta charset='UTF-8' />
-		<meta name='description' content='Software Engineer - Frontend Developer' />
 		<meta name='viewport' content='width=device-width' />
+		<meta name='description' content={t('ui.metaDescription')} />
+		<meta name='author' content={t('ui.name')} />
 		<link rel='icon' type='image/svg+xml' href=`${getCurrentHost()}/favicon.ico` />
+		<link rel='canonical' href={pageUrl} />
+		<link rel='alternate' hreflang='en' href={`${getCurrentHost()}/`} />
+		<link rel='alternate' hreflang='es' href={`${getCurrentHost()}/es`} />
+		<link rel='alternate' hreflang='x-default' href={`${getCurrentHost()}/`} />
+		<meta property='og:type' content='website' />
+		<meta property='og:url' content={pageUrl} />
+		<meta property='og:title' content={title} />
+		<meta property='og:description' content={t('ui.metaDescription')} />
+		<meta property='og:image' content={`${getCurrentHost()}/images/webp/ProfilePhoto.webp`} />
+		<meta name='twitter:card' content='summary' />
+		<meta name='twitter:title' content={title} />
+		<meta name='twitter:description' content={t('ui.metaDescription')} />
+		<meta name='twitter:image' content={`${getCurrentHost()}/images/webp/ProfilePhoto.webp`} />
 		<link rel='preconnect' href='https://fonts.googleapis.com' />
 		<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
 		<link
@@ -35,6 +81,7 @@ const { currentLocale } = Astro
 		/>
 		<meta name='generator' content={Astro.generator} />
 		<title>{title}</title>
+		<script type='application/ld+json' is:inline set:html={JSON.stringify(schema)} />
 	</head>
 	<body class='bg-gray-900 font-redit'>
 		<div
@@ -55,7 +102,6 @@ const { currentLocale } = Astro
 		function updateMenu() {
 			let activeSectionIndex = -1
 			sections.forEach((section, index) => {
-				const link = menuLinks[index]
 				if (isSectionVisible(section) && activeSectionIndex === -1) {
 					activeSectionIndex = index
 				}

@@ -1,24 +1,38 @@
 ---
-import { ProjectsData } from '../data'
+import { FeaturedProjectsData, MoreProjectsData } from '../data'
 import Card from './Card.astro'
 import type { TypesLang } from '../i18n/i18n.types'
 import { useTranslation } from '../i18n/utils'
+
 const { currentLocale } = Astro
 const lang = currentLocale as TypesLang
 const t = useTranslation(lang)
 ---
 
 <section id='projects' class='mt-10'>
-	<div class='sticky top-0 backdrop-blur-lg z-20 -mx-6 p-2 px-6 lg:relative'>
-		<h2 class='font-semibold text-xl text-gray-200'>{t('ui.projectsTitle')}</h2>
+	<div class='sticky top-0 backdrop-blur-lg z-20 -mx-6 py-2 px-6 lg:relative'>
+		<h2 class='font-semibold text-xl text-gray-100'>{t('ui.projectsTitle')}</h2>
 		<div class='w-11 h-1 bg-sky-600 my-1 rounded-lg'></div>
 		<p class='text-sm font-light text-gray-400 pb-2'>{t('ui.projectsSubTitle')}</p>
 	</div>
-	<div class='pb-1 space-y-3'>
+
+	<div class='space-y-4'>
 		{
-			ProjectsData[lang].map((item, index) => (
-				<Card title={item.name} body={item.description} technologies={item.tags} images={item.images} />
+			FeaturedProjectsData[lang].map((project) => (
+				<Card project={project} />
 			))
 		}
+	</div>
+
+	<div class='mt-12'>
+		<h3 class='font-semibold text-lg text-gray-200'>{t('ui.moreProjectsTitle')}</h3>
+		<p class='text-sm font-light text-gray-400 pb-3'>{t('ui.moreProjectsSubTitle')}</p>
+		<div class='grid gap-4 sm:grid-cols-2'>
+			{
+				MoreProjectsData[lang].map((project) => (
+					<Card project={project} compact />
+				))
+			}
+		</div>
 	</div>
 </section>

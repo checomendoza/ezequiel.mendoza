@@ -1,36 +1,158 @@
 ---
-interface Props {
-	title: string
-	body: string
-	images: string[]
-	technologies?: string[]
-}
-const { title, body, images, technologies } = Astro.props
 import { getCurrentHost } from '../utilities'
+import type { TypesProjects } from '../constants/index.types'
 
-let active = 0
+interface Props {
+	project: TypesProjects
+	compact?: boolean
+}
+
+const { project, compact = false } = Astro.props
+
+const statusClasses = {
+	production: 'bg-sky-400/10 text-sky-300 ring-sky-400/20',
+	experiment: 'bg-violet-400/10 text-violet-300 ring-violet-400/20',
+	prototype: 'bg-amber-400/10 text-amber-300 ring-amber-400/20',
+	'open-source': 'bg-emerald-400/10 text-emerald-300 ring-emerald-400/20',
+}
 ---
 
-<!-- TODO: Show link on every project -->
-<div class='bg-gray-700 p-4 rounded-xl border-gray-900 border-1 lg:columns-2 columns-1 min-h-48 relative'>
-	<div class='break-inside-avoid-column flex flex-row gap-5 justify-center'>
-		{images.map((image, index) => <img src={getCurrentHost() + image} alt={title} class={`rounded-lg max-h-56`} />)}
-	</div>
-	<div class='break-inside-avoid-column mt-5'>
-		<h2 class='font-semibold text-gray-300'>
-			{title}
-		</h2>
-		<p class='text-gray-500 text-sm'>
-			{body}
-		</p>
-		<div class='flex flex-wrap space-x-1 mt-5 relative'>
+{
+	compact ? (
+		<article class='flex flex-col rounded-xl border border-gray-800 bg-gray-800/50 p-5'>
 			{
-				technologies?.map((item) => (
-					<div class='flex items-center rounded-full bg-sky-300/10 px-3 py-1 text-xs font-medium leading-5 text-sky-300 mt-2 '>
-						{item}
-					</div>
+				project.images.length > 0 && (
+					<img
+						src=`${getCurrentHost()}${project.images[0]}`
+						alt=`${project.name}`
+						class='mb-4 h-32 w-full rounded-lg object-cover'
+						loading='lazy'
+						width='320'
+						height='128'
+					/>
+				)
+			}
+			<h4 class='font-semibold text-gray-200'>{project.name}</h4>
+			<p class='mt-1 text-sm text-gray-500'>{project.description}</p>
+			<div class='mt-3 flex flex-wrap gap-1'>
+				{
+					project.technologies.map((tech) => (
+						<span
+							class='rounded-full bg-sky-300/10 px-2.5 py-0.5 text-[11px] font-medium text-sky-300'
+						>
+							{tech}
+						</span>
+					))
+				}
+			</div>
+			{
+				project.links.filter((link) => link.url).map((link) => (
+					<a
+						href={link.url}
+						target='_blank'
+						rel='noopener noreferrer'
+						class='mt-3 text-sm font-medium text-sky-400 hover:text-sky-300'
+					>
+						{link.label} →
+					</a>
 				))
 			}
-		</div>
-	</div>
-</div>
+		</article>
+	) : (
+		<article class='overflow-hidden rounded-2xl border border-gray-800 bg-gray-800/50'>
+			<div
+				class='relative flex h-44 items-center justify-center bg-gradient-to-br from-sky-900/60 via-gray-800 to-gray-900'
+			>
+				{
+					project.images.length > 0 ? (
+						<img
+							src=`${getCurrentHost()}${project.images[0]}`
+							alt=`${project.name}`
+							class='h-full w-full object-cover'
+							loading='lazy'
+							width='640'
+							height='176'
+						/>
+					) : (
+						<span
+							class='text-6xl font-bold text-gray-700/60 select-none'
+							aria-hidden='true'
+						>
+							{project.name.slice(0, 2).toUpperCase()}
+						</span>
+					)
+				}
+				<span
+					class={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-medium ring-1 ring-inset ${statusClasses[project.status]}`}
+				>
+					{project.category}
+				</span>
+			</div>
+			<div class='p-6'>
+				<h3 class='text-xl font-semibold text-gray-100'>{project.name}</h3>
+				{
+					project.subtitle && (
+						<p class='mt-1 text-sm font-medium text-sky-400 leading-snug'>
+							{project.subtitle}
+						</p>
+					)
+				}
+				<p class='mt-2 text-sm text-gray-400 leading-relaxed'>{project.description}</p>
+				{
+					project.highlights.length > 0 && (
+						<ul class='mt-4 space-y-2'>
+							{
+								project.highlights.map((highlight) => (
+									<li class='flex gap-2 text-sm text-gray-400 font-light leading-relaxed'>
+										<svg
+											viewBox='0 0 24 24'
+											fill='none'
+											stroke='currentColor'
+											stroke-width='2'
+											stroke-linecap='round'
+											stroke-linejoin='round'
+											class='mt-0.5 h-3.5 w-3.5 shrink-0 text-sky-500'
+											aria-hidden='true'
+										>
+											<path d='M20 6 9 17l-5-5' />
+										</svg>
+										<span>{highlight}</span>
+									</li>
+								))
+							}
+						</ul>
+					)
+				}
+				<div class='mt-4 flex flex-wrap gap-2'>
+					{
+						project.technologies.map((tech) => (
+							<span
+								class='rounded-full bg-sky-300/10 px-3 py-1 text-xs font-medium text-sky-300'
+							>
+								{tech}
+							</span>
+						))
+					}
+				</div>
+				{
+					project.links.filter((link) => link.url).length > 0 && (
+						<div class='mt-4 flex flex-wrap gap-3'>
+							{
+								project.links.filter((link) => link.url).map((link) => (
+									<a
+										href={link.url}
+										target='_blank'
+										rel='noopener noreferrer'
+										class='text-sm font-medium text-sky-400 hover:text-sky-300'
+									>
+										{link.label} →
+									</a>
+								))
+							}
+						</div>
+					)
+				}
+			</div>
+		</article>
+	)
+}

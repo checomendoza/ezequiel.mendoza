@@ -1,0 +1,46 @@
+---
+import type { TypesLang } from '../i18n/i18n.types'
+import { useTranslation } from '../i18n/utils'
+
+const { currentLocale } = Astro
+const lang = currentLocale as TypesLang
+const t = useTranslation(lang)
+---
+
+<section id='focus' class='mt-10'>
+	<div class='sticky top-0 backdrop-blur-lg z-20 -mx-6 py-2 px-6 lg:relative'>
+		<h2 class='font-semibold text-xl text-gray-100'>{t('ui.focusTitle')}</h2>
+		<div class='w-11 h-1 bg-sky-600 my-1 rounded-lg'></div>
+		<p class='text-sm font-light text-gray-400 pb-2'>{t('ui.focusSubTitle')}</p>
+	</div>
+
+	<div class='mt-4 flex flex-wrap gap-3'>
+		{
+			t('ui.focusItems').map((item) => (
+				<span
+					class='inline-flex items-center gap-2 rounded-full border border-sky-400/20 bg-sky-400/5 px-4 py-2 text-sm font-medium text-sky-200'
+				>
+					<svg
+						viewBox='0 0 24 24'
+						fill='none'
+						stroke='currentColor'
+						stroke-width='2'
+						stroke-linecap='round'
+						stroke-linejoin='round'
+						class='h-4 w-4 text-sky-400'
+						aria-hidden='true'
+					>
+						<path
+							d='m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z'
+						/>
+						<path d='M5 3v4' />
+						<path d='M19 17v4' />
+						<path d='M3 5h4' />
+						<path d='M17 19h4' />
+					</svg>
+					{item}
+				</span>
+			))
+		}
+	</div>
+</section>

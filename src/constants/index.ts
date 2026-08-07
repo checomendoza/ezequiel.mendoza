@@ -1,36 +1,18 @@
 /** @format */
 export const PRODUCTION_URL = "https://ezequielmendoza-dev.github.io";
-export const PROJECTS_NAMES = [
-  "FULL24",
-  "AUDEC",
-  "LUIGI HELADERIA",
-  "RADIO BELLA VISTA",
-  "CLUB SAN MARTIN",
-  "MUSICQUIZ",
-  "NBATEAM",
-];
-export const TECHNOLOGIES = [
-  "React",
-  "React Native",
-  "Next.js",
-  "Tailwind",
-  "MUI",
-  "Astro",
-  "Javascript",
-  "Typescript",
-  "AWS",
-  "Firebase",
-  "Git",
-];
 export const wordsToHighLight = [
   {
-    word: "desarrollador de software",
-    className: "text-gray-200 font-semibold",
+    word: "Senior Software Engineer",
+    className: "text-sky-300 font-medium",
   },
-  { word: "software developer", className: "text-gray-200 font-semibold" },
-  { word: "react", className: "text-gray-100 font-semibold" },
-  { word: "native", className: "text-gray-100 font-semibold" },
-  { word: "next.js", className: "text-gray-100 font-semibold" },
-  { word: "tailwind", className: "text-gray-100 font-semibold" },
-  { word: "mui", className: "text-gray-100 font-semibold" },
+  { word: "complete digital products", className: "text-sky-300 font-medium" },
+  { word: "AI-powered SaaS products", className: "text-sky-300 font-medium" },
+  { word: "applied AI", className: "text-sky-300 font-medium" },
+  { word: "AI-driven engineering systems", className: "text-sky-300 font-medium" },
+  { word: "specification-driven frameworks", className: "text-sky-300 font-medium" },
+  { word: "productos digitales completos", className: "text-sky-300 font-medium" },
+  { word: "productos SaaS con IA", className: "text-sky-300 font-medium" },
+  { word: "IA aplicada", className: "text-sky-300 font-medium" },
+  { word: "sistemas de ingeniería impulsados por IA", className: "text-sky-300 font-medium" },
+  { word: "frameworks guiados por especificaciones", className: "text-sky-300 font-medium" },
 ];
