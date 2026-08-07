@@ -1,23 +1,44 @@
 /** @format */
 
+export type TypesProjectStatus =
+  | "production"
+  | "experiment"
+  | "prototype"
+  | "open-source";
+
 export type TypesProjects = {
   id: number;
   name: string;
+  subtitle?: string;
+  category: string;
+  status: TypesProjectStatus;
   description: string;
+  highlights: string[];
+  technologies: string[];
   images: string[];
-  tags: string[];
-  link: string | null;
+  links: { label: string; url: string | null }[];
 };
+
 export type TypesExperiences = {
-  name: string;
+  company: string;
+  role: string;
   period: string;
-  description: string;
+  location: string;
+  highlights: string[];
+  technologies: string[];
 };
+
 export type TypesProjectsTranslates = {
   es: TypesProjects[];
   en: TypesProjects[];
 };
+
 export type TypesExperiencesTranslates = {
   es: TypesExperiences[];
-  en?: TypesExperiences[];
+  en: TypesExperiences[];
+};
+
+export type TypesSkillsGroup = {
+  title: string;
+  skills: string[];
 };

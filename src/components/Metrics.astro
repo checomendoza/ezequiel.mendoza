@@ -1,0 +1,25 @@
+---
+import type { TypesLang } from '../i18n/i18n.types'
+import { useTranslation } from '../i18n/utils'
+
+const { currentLocale } = Astro
+const lang = currentLocale as TypesLang
+const t = useTranslation(lang)
+
+const metrics = [
+	{ value: t('ui.metricYearsValue'), label: t('ui.metricYearsLabel') },
+	{ value: t('ui.metricProductsValue'), label: t('ui.metricProductsLabel') },
+	{ value: t('ui.metricSaaSValue'), label: t('ui.metricSaaSLabel') },
+]
+---
+
+<div class='mt-8 grid grid-cols-3 divide-x divide-gray-800 rounded-xl border border-gray-800 bg-gray-800/50'>
+	{
+		metrics.map((metric) => (
+			<div class='flex flex-col items-center gap-1 px-2 py-6 text-center'>
+				<span class='text-3xl font-bold text-sky-400'>{metric.value}</span>
+				<span class='text-xs font-light text-gray-400 leading-snug'>{metric.label}</span>
+			</div>
+		))
+	}
+</div>

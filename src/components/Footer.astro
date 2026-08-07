@@ -1,15 +1,28 @@
 ---
 import type { TypesLang } from '../i18n/i18n.types'
 import { useTranslation } from '../i18n/utils'
+import LinksSocials from './LinksSocials.astro'
 
 const { currentLocale } = Astro
 const lang = currentLocale as TypesLang
 const t = useTranslation(lang)
 ---
 
-<div class='w-full mt-10 bg-gray-900 h-32 px-5 py-3 flex justify-center'>
-	<div class='w-[800px] text-gray-500 text-center space-y-2 text-sm'>
-		<h4>{t('ui.name')} | {t('ui.title')} | Corrientes | Argentina</h4>
-		<h5>ezequielmendoza.dev@gmail.com | (+54)3777 541327</h5>
+<footer class='mt-16 w-full border-t border-gray-800 bg-gray-900 px-5 py-12'>
+	<div class='flex flex-col items-center gap-6 text-center'>
+		<div>
+			<h3 class='text-2xl font-semibold text-gray-100'>{t('ui.footerCta')}</h3>
+			<p class='mt-2 text-sm text-gray-500'>{t('ui.footerText')}</p>
+		</div>
+		<a
+			href='mailto:ezequielmendoza.dev@gmail.com'
+			class='rounded-lg bg-sky-600 px-6 py-3 text-sm font-semibold text-white hover:bg-sky-500 transition-colors'
+		>
+			ezequielmendoza.dev@gmail.com
+		</a>
+		<LinksSocials />
+		<p class='text-xs text-gray-600'>
+			© 2026 {t('ui.name')} · Corrientes, Argentina
+		</p>
 	</div>
-</div>
+</footer>
